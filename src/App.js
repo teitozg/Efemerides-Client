@@ -29,7 +29,8 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5001/posts").then((response) => {
+    const renderBackendUrl = "https://efemerides-api.onrender.com"; // replace with your actual Render backend URL
+    axios.get(`${renderBackendUrl}/posts`).then((response) => {
       setPosts(response.data);
     });
   }, []);
