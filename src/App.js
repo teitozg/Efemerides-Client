@@ -56,7 +56,20 @@ function App() {
     : posts;
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString);
+    if (!dateString) {
+      return {
+        formattedDate: "Fecha no disponible",
+        dateClass: "",
+      };
+    }
+
+    // Parse the date string correctly
+    const dateParts = dateString.split("-");
+    const year = parseInt(dateParts[0], 10);
+    const month = parseInt(dateParts[1], 10) - 1; // JavaScript months are 0-11
+    const day = parseInt(dateParts[2], 10);
+
+    const date = new Date(year, month, day); // Create a date object with local time
     const today = new Date();
 
     const isToday =
